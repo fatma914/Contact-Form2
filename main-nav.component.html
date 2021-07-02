@@ -1,0 +1,132 @@
+
+
+
+<mat-sidenav-container class="sidenav-container" [hasBackdrop]="true">
+  <mat-sidenav style="background-color: #673ab7; color: white" #drawer class="sidenav"
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list >
+
+      <!-- Smooth Scroll -->
+      <app-header></app-header>
+
+      <a style="color: white" mat-list-item href="#" (click)="toHome ()" id="home">Home</a>
+      <a style="color: white" mat-list-item href="#" (click)="toAboutUs ()" id="about">About Us</a>
+      <a style="color: white" mat-list-item href="#" (click)="toServices ()" id="services">Services</a>
+      <a style="color: white" mat-list-item href="#" (click)="toContactUs ()" id="contact">Contact Us</a>
+      <a style="color: white" mat-list-item href="#" (click)="toOurTeachers ()" id="ourteachers">Our Teachers</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+<div class="container-fluid">
+
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>My Kindergarten</span>
+      <span class="spacer"></span>
+      <a href="#">Home</a>
+      <a href="#">About Us</a>
+      <a  href="#">Services</a>
+      <a  href="#">Contact Us</a>
+      <a  href="#">Our Teachers</a>
+    </mat-toolbar>
+    <ng-content></ng-content>
+
+
+    <!-- Add Content Here -->
+    <ngb-carousel >
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img [src]="img" alt="photo1" style="width: 100%; height: 100%">
+        </div>
+        <div class="carousel-caption">
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img [src]="img1" alt="photo2"style="width: 100%; height: 100%">
+        </div>
+        <div class="carousel-caption">
+          <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img [src]="img2" alt="photo3" style="width: 100%; height: 100%" >
+        </div>
+        <div class="carousel-caption">
+          <h3>Third slide label</h3>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+        </div>
+      </ng-template>
+
+    </ngb-carousel>
+
+    <!-- Contact -->
+
+
+    <section class="section-container">
+      <div class="container-fluid">
+        <div class="hero-body">
+          <p class="title" style="color: black">
+            Contact Us!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="container-fluid">
+
+      <!-- name -->
+<form id="simpleForm"  Submit="getValues(simpleForm.value)">
+      <mat-form-field appearance="fill"  style="width: 100%">
+        <mat-label>Name</mat-label>
+        <label>
+          <input matInput style="color: black">
+        </label>
+      </mat-form-field>
+
+
+        <mat-form-field appearance="fill" style="width: 100%">
+          <mat-label>Enter your email</mat-label>
+          <label>
+            <input matInput placeholder="pat@example.com" [formControl]="email" required style="color: black">
+          </label>
+        <!--  <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+        </mat-form-field>
+
+
+
+      <!-- message -->
+
+      <mat-form-field appearance="fill" style="width: 100%">
+        <mat-label>Message</mat-label>
+        <label>
+          <textarea matInput></textarea>
+        </label>
+      </mat-form-field>
+
+      <!-- Submit -->
+
+      <div class="mat-raised-button">
+        <button mat-raised-button>Submit</button>
+      </div>
+</form>
+    </div>
+
+</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
